@@ -14,24 +14,24 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid"> 
   <div class="navbar-header">
-    <a class="navbar-brand" href="#">impressionyang的工具箱</a>
+    <a class="navbar-brand" href = "javascript:void(0);" onclick ="switch_pages_by_file_path('html/hello.html')">impressionyang的工具箱</a>
   </div>
   <div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">计划</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          Java 
+          功能 
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="#">jmeter</a></li>
-          <li><a href="#">EJB</a></li>
+          <li><a href = "javascript:void(0);" onclick ="switch_pages_by_file_path('html/uac_pcm_data_convert.html')">UAC PCM音频采样点转换</a></li>
+          <!-- <li><a href="#">EJB</a></li>
           <li><a href="#">Jasper Report</a></li>
           <li class="divider"></li>
           <li><a href="#">分离的链接</a></li>
           <li class="divider"></li>
-          <li><a href="#">另一个分离的链接</a></li>
+          <li><a href="#">另一个分离的链接</a></li> -->
         </ul>
       </li>
     </ul>
@@ -40,8 +40,16 @@
 </nav>
 
 <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="html/hello.html"></iframe>
+  <iframe id="pages_container" class="embed-responsive-item" src="html/hello.html"></iframe>
 </div>
 
 </body>
+
+<script>
+function switch_pages_by_file_path(file_path) {
+  var container = document.getElementById("pages_container");
+  container.src = file_path;
+}
+</script>
+
 </html>

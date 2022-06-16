@@ -1,0 +1,11 @@
+{
+	"main": "index.html",
+	"logo": "logo.png",
+	"features": [
+		{
+		  "code": "impress",
+		  "explain": "impressionyang's impress tools",
+			"cmds":["impress", "imt"]
+		}
+	]
+}
