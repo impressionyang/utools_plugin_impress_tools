@@ -48,10 +48,14 @@ function convert_usb_pcm_data() {
   // console.log(input_raw_data);
   output.value = "";
 
+  input_raw_data = input_raw_data.replace(/[\r\n]/g, "");
   var input_list = input_raw_data.split(" ");
 
   for ( var i = 0;  i < input_list.length; i ++) {
     temp_data = hex2int(input_list[i]);
+    if (input_list[i] === '') {
+      continue;
+    }
     output_data += temp_data.toString() + " ";
     if (temp_data > maxdata) {
       maxdata = temp_data;
