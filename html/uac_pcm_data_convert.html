@@ -22,9 +22,18 @@
     </div>
   </form>
   
-  <p>
-    <button type="button" class="btn btn-primary btn-lg btn-block" href = "javascript:void(0);" onclick="convert_usb_pcm_data()">运行</button>
-  </p>
+  <div class="btn-toolbar" role="toolbar">
+    <button type="button" class="btn btn-primary" href="javascript:void(0);" onclick="convert_usb_pcm_data()">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      运行
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </button>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal_of_how_to_use_pcm_uac_data_convert">如何使用</button>
+    </div>
+  </div>
   
   <form role="form">
     <div class="form-group">
@@ -32,6 +41,28 @@
       <textarea id="text_outputconvert_data" class="form-control" rows="6"></textarea>
     </div>
   </form>
+</div>
+
+
+<!-- 模态框（Modal） 如何使用 -->
+<div class="modal fade" id="modal_of_how_to_use_pcm_uac_data_convert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					<b>如何使用</b>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<p>在上方的窗口输入原始的PCM数据，然后点击中间的运行按钮，然后在下方的窗口会输出所有的转换数据和PCM最大值</p>
+        <hr>
+        <p>点击右上方或者面板外退出</p>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
 </div>
 
 </body>
