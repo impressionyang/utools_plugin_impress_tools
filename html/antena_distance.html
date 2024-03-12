@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/math.min.js"></script>
+  <script src="../js/antena_distance_calc.js"></script>
+  <title>antena_distance_calc</title>
+</head>
+<body>
+
+
+<div class="container">
+
+  
+  <br/>
+  <br/>
+  <br/>
+  
+  <p>
+    无线理论最大传输距离
+  </p>
+
+  <br/>
+  <br/>
+  <br/>
+  
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="lossInput">LOSS</label>
+      <input type="text" class="form-control" id="lossInput" placeholder="loss">
+    </div>
+    <div class="form-group">
+      <label for="freqInput">freq</label>
+      <input type="text" class="form-control" id="freqInput" placeholder="frequency">
+    </div>
+    <button type="button" class="btn btn-primary" href="javascript:void(0);" onclick="convert_usb_pcm_data()">
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      calc 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</button>
+	<div class="form-group">
+      <input type="text" class="form-control" id="resultOut" placeholder="result">
+	  <label for="resultOut">m</label>
+    </div>
+  </form>
+  
+  <br/>
+  
+  <div class="btn-group">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal_of_how_to_use_pcm_uac_data_convert">如何使用</button>
+  </div>
+  
+</div>
+
+
+<!-- 模态框（Modal） 如何使用 -->
+<div class="modal fade" id="modal_of_how_to_use_pcm_uac_data_convert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					<b>如何使用</b>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<p>在上方的窗口输入天线的衰减（dBm，发射功率-接收灵敏度）和无线频率（MHz），然后点击蓝色计算按钮，最后在右侧框会出现理论最大距离</p>
+        <hr>
+        <p>点击右上方或者面板外退出</p>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+</body>
+
+<script>
+function convert_usb_pcm_data() {
+  var input1 = document.getElementById("lossInput");
+  var input2 = document.getElementById("freqInput");
+  var output = document.getElementById("resultOut");
+  var input_raw_data1 = input1.value;
+  var input_raw_data2 = input2.value;
+  var maxdata = 0;
+  var temp_data = 0;
+  var output_data = "";
+
+  // console.log(input_raw_data);
+  output.value = "";
+
+  input_raw_data1 = input_raw_data1.replace(/[\r\n]/g, "");
+  input_raw_data2 = input_raw_data2.replace(/[\r\n]/g, "");
+
+  temp_data = anten_distance_calc(input_raw_data1, input_raw_data2);
+
+  output_data += temp_data.toString();
+  // console.log(output_data);
+  output.value = output_data;
+
+}
+
+function anten_distance_calc(loss, freq_m) {
+    var calc_num = math.subtract(loss, "32.44");
+    calc_num = math.subtract(calc_num, math.multiply( 20, math.log(freq_m, 10) ) );
+    calc_num = math.divide(calc_num, 20);
+    calc_num = math.pow(10, calc_num);
+    calc_num = math.multiply(1000, calc_num);
+    
+	return calc_num;
+}
+</script>
+
+</html>
