@@ -38,7 +38,7 @@
       <label for="freqInput">freq</label>
       <input type="text" class="form-control" id="freqInput" placeholder="frequency">
     </div>
-    <button type="button" class="btn btn-primary" href="javascript:void(0);" onclick="convert_usb_pcm_data()">
+    <button type="button" class="btn btn-primary" href="javascript:void(0);" onclick="calc_distance()">
 	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       calc 
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -82,7 +82,7 @@
 </body>
 
 <script>
-function convert_usb_pcm_data() {
+function calc_distance() {
   var input1 = document.getElementById("lossInput");
   var input2 = document.getElementById("freqInput");
   var output = document.getElementById("resultOut");
